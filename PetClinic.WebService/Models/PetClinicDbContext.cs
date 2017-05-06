@@ -13,5 +13,13 @@ namespace PetClinic.WebService.Models
         {
             return new PetClinicDbContext();
         }
+
+        public System.Data.Entity.DbSet<PetClinic.WebService.Models.Veterinarian> Veterinarians { get; set; }
+
+        public System.Data.Entity.DbSet<PetClinic.WebService.Models.OwnerUser> OwnerUsers { get; set; }
+
+        public System.Data.Entity.DbSet<PetClinic.WebService.Models.Pet> Pets { get; set; }
+
+        public System.Data.Entity.DbSet<PetClinic.WebService.Models.Appointment> Appointments { get; set; }
     }
 }

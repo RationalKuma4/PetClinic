@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PetClinic.WebService.Models
 {
     public class Veterinarian
     {
+        [Key, ForeignKey(nameof(OwnerUser))]
         public int VeterinarianId { get; set; }
 
         [Required]
@@ -40,7 +42,7 @@ namespace PetClinic.WebService.Models
         [DataType(DataType.Text)]
         public string Observations { get; set; }
 
-        public object OwnerUserId { get; set; }
+        public int OwnerUserId { get; set; }
         public virtual OwnerUser OwnerUser { get; set; }
     }
 }

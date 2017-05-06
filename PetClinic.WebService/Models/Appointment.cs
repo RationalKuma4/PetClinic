@@ -7,6 +7,7 @@ namespace PetClinic.WebService.Models
 {
     public class Appointment
     {
+        [Key]
         public int AppointmentId { get; set; }
 
         [DisplayName("Fecha de la Cita")]

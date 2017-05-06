@@ -1,0 +1,14 @@
+﻿Saber como usar un enum
+http://thatcsharpguy.com/post/c-sharp-enums/
+
+Cambiar el id del usuario por un entero
+https://docs.microsoft.com/en-us/aspnet/identity/overview/extensibility/change-primary-key-for-users-in-aspnet-identity#mvcupdate3
+
+Error al tratar de generas los controladores
+->web api unable to determine the principal end of an association between the types
+Esto indica que no se ha indicado que entidad es dependiente de cual. Esto para las relaciones 1:1 con entity
+http://stackoverflow.com/questions/6531671/what-does-principal-end-of-an-association-means-in-11-relationship-in-entity-fr
+http://stackoverflow.com/questions/28887156/unable-to-determine-the-principal-end-of-an-association-between-the-types
+
+
+
