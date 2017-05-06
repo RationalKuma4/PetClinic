@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PetClinic.WebService.Repositories
 {
-    public class RepositoryAppointmentService
+    public class RepositoryPet
     {
     }
 }

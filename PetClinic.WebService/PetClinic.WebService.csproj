@@ -254,15 +254,21 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PetsController.cs" />
     <Compile Include="Controllers\VeterinariansController.cs" />
+    <Compile Include="DataServices\AppointmentService.cs" />
+    <Compile Include="DataServices\Interfaces\IAppointmentService.cs" />
+    <Compile Include="DataServices\Interfaces\IPetService.cs" />
+    <Compile Include="DataServices\Interfaces\IVeterinarianService.cs" />
+    <Compile Include="DataServices\PetService.cs" />
+    <Compile Include="DataServices\VeterinarianService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\Appointment\IAppointmentReader.cs" />
-    <Compile Include="Interfaces\Appointment\IAppointmentWriter.cs" />
-    <Compile Include="Interfaces\Pet\IPetReader.cs" />
-    <Compile Include="Interfaces\Pet\IPetWriter.cs" />
-    <Compile Include="Interfaces\Veterinarian\IVeterinarianReader.cs" />
-    <Compile Include="Interfaces\Veterinarian\IVeterinarianWriter.cs" />
+    <Compile Include="Repositories\Interfaces\Appointment\IAppointmentReader.cs" />
+    <Compile Include="Repositories\Interfaces\Appointment\IAppointmentWriter.cs" />
+    <Compile Include="Repositories\Interfaces\Pet\IPetReader.cs" />
+    <Compile Include="Repositories\Interfaces\Pet\IPetWriter.cs" />
+    <Compile Include="Repositories\Interfaces\Veterinarian\IVeterinarianReader.cs" />
+    <Compile Include="Repositories\Interfaces\Veterinarian\IVeterinarianWriter.cs" />
     <Compile Include="Migrations\201705060321040_BuildDB.cs" />
     <Compile Include="Migrations\201705060321040_BuildDB.Designer.cs">
       <DependentUpon>201705060321040_BuildDB.cs</DependentUpon>
@@ -289,9 +295,9 @@
     <Compile Include="Models\Veterinarian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Repositories\RepositoryAppointmentService.cs" />
-    <Compile Include="Repositories\RepositoryPetService.cs" />
-    <Compile Include="Repositories\RepositoryVeterinarianService.cs" />
+    <Compile Include="Repositories\RepositoryAppointment.cs" />
+    <Compile Include="Repositories\RepositoryPet.cs" />
+    <Compile Include="Repositories\RepositoryVeterinarian.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />

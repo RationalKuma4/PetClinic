@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PetClinic.WebService.Repositories
+namespace PetClinic.WebService.DataServices
 {
-    public class RepositoryVeterinarianService
+    public class AppointmentService
     {
     }
 }
