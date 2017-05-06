@@ -12,7 +12,7 @@ namespace PetClinic.WebService.Models
         {
             Appointments = new HashSet<Appointment>();
         }
-        [Key]
+
         public int PetId { get; set; }
 
         [Required]
@@ -59,7 +59,7 @@ namespace PetClinic.WebService.Models
         public string Observations { get; set; }
 
 
-        public int OwnerUserId { get; set; }
+        public object OwnerUserId { get; set; }
         public virtual OwnerUser OwnerUser { get; set; }
         public int AppointmentId { get; set; }
         public virtual IEnumerable<Appointment> Appointments { get; set; }

@@ -262,6 +262,12 @@
     <Compile Include="Models\Account\RemoveLoginBindingModel.cs" />
     <Compile Include="Models\Account\SetPasswordBindingModel.cs" />
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\CustomUser\CustomRole.cs" />
+    <Compile Include="Models\CustomUser\CustomRoleStore.cs" />
+    <Compile Include="Models\CustomUser\CustomUserClaim.cs" />
+    <Compile Include="Models\CustomUser\CustomUserLogin.cs" />
+    <Compile Include="Models\CustomUser\CustomUserRole.cs" />
+    <Compile Include="Models\CustomUser\CustomUserStore.cs" />
     <Compile Include="Models\Enums\AppointmentType.cs" />
     <Compile Include="Models\Enums\PetType.cs" />
     <Compile Include="Models\OwnerUser.cs" />

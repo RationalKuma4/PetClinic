@@ -14,6 +14,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using PetClinic.WebService.Models;
 using PetClinic.WebService.Models.Account;
+using PetClinic.WebService.Models.CustomUser;
 using PetClinic.WebService.Providers;
 using PetClinic.WebService.Results;
 using PetClinic.WebService.ViewModels.Account;
@@ -79,7 +80,7 @@ namespace PetClinic.WebService.Controllers
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            OwnerUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId<int>());
 
             if (user == null)
             {
@@ -88,7 +89,7 @@ namespace PetClinic.WebService.Controllers
 
             List<UserLoginInfoViewModel> logins = new List<UserLoginInfoViewModel>();
 
-            foreach (IdentityUserLogin linkedAccount in user.Logins)
+            foreach (CustomUserLogin linkedAccount in user.Logins)
             {
                 logins.Add(new UserLoginInfoViewModel
                 {
@@ -124,7 +125,7 @@ namespace PetClinic.WebService.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
+            IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId<int>(), model.OldPassword,
                 model.NewPassword);
 
             if (!result.Succeeded)
@@ -144,7 +145,7 @@ namespace PetClinic.WebService.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+            IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId<int>(), model.NewPassword);
 
             if (!result.Succeeded)
             {
@@ -181,7 +182,7 @@ namespace PetClinic.WebService.Controllers
                 return BadRequest("El inicio de sesión externo ya está asociado a una cuenta.");
             }
 
-            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(),
+            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId<int>(),
                 new UserLoginInfo(externalData.LoginProvider, externalData.ProviderKey));
 
             if (!result.Succeeded)
@@ -205,11 +206,11 @@ namespace PetClinic.WebService.Controllers
 
             if (model.LoginProvider == LocalLoginProvider)
             {
-                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId());
+                result = await UserManager.RemovePasswordAsync(User.Identity.GetUserId<int>());
             }
             else
             {
-                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(),
+                result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId<int>(),
                     new UserLoginInfo(model.LoginProvider, model.ProviderKey));
             }
 
@@ -260,10 +261,8 @@ namespace PetClinic.WebService.Controllers
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
 
-                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                   OAuthDefaults.AuthenticationType);
-                ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    CookieAuthenticationDefaults.AuthenticationType);
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager);
+                ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager);
 
                 AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);

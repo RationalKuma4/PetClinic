@@ -5,7 +5,6 @@ namespace PetClinic.WebService.Models
 {
     public class Veterinarian
     {
-        [Key]
         public int VeterinarianId { get; set; }
 
         [Required]
@@ -41,7 +40,7 @@ namespace PetClinic.WebService.Models
         [DataType(DataType.Text)]
         public string Observations { get; set; }
 
-        public int OwnerUserId { get; set; }
+        public object OwnerUserId { get; set; }
         public virtual OwnerUser OwnerUser { get; set; }
     }
 }

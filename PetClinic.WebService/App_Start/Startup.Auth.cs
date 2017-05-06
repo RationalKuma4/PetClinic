@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
@@ -24,7 +25,18 @@ namespace PetClinic.WebService
 
             // Permitir que la aplicación use una cookie para almacenar información para el usuario que inicia sesión
             // y una cookie para almacenar temporalmente información sobre un usuario que inicia sesión con un proveedor de inicio de sesión de terceros
-            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString(""),
+                Provider = new CookieAuthenticationProvider
+                {
+                    OnValidateIdentity = SecurityStampValidator
+                        .OnValidateIdentity<ApplicationUserManager, OwnerUser, int>(TimeSpan.FromMinutes(30),
+                        (manager, user) => user.GenerateUserIdentityAsync(manager), id => id.GetUserId<int>())
+                }
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Configure la aplicación para el flujo basado en OAuth

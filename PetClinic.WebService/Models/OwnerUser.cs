@@ -5,10 +5,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PetClinic.WebService.Models.CustomUser;
 
 namespace PetClinic.WebService.Models
 {
-    public class OwnerUser : IdentityUser
+    public class OwnerUser : IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
         public OwnerUser()
         {
@@ -25,9 +26,9 @@ namespace PetClinic.WebService.Models
         public int PetId { get; set; }
         public ICollection<Pet> Pets { get; set; }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<OwnerUser> manager, string authenticationType)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<OwnerUser, int> manager)
         {
-            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             return userIdentity;
         }
     }
