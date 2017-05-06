@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using PetClinic.WebService.Models.CustomUser;
+using System.Data.Entity;
 
 namespace PetClinic.WebService.Models
 {
@@ -14,12 +15,12 @@ namespace PetClinic.WebService.Models
             return new PetClinicDbContext();
         }
 
-        public System.Data.Entity.DbSet<PetClinic.WebService.Models.Veterinarian> Veterinarians { get; set; }
+        public DbSet<Veterinarian> Veterinarians { get; set; }
 
-        public System.Data.Entity.DbSet<PetClinic.WebService.Models.OwnerUser> OwnerUsers { get; set; }
+        //public DbSet<OwnerUser> OwnerUsers { get; set; }
 
-        public System.Data.Entity.DbSet<PetClinic.WebService.Models.Pet> Pets { get; set; }
+        public DbSet<Pet> Pets { get; set; }
 
-        public System.Data.Entity.DbSet<PetClinic.WebService.Models.Appointment> Appointments { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
     }
 }

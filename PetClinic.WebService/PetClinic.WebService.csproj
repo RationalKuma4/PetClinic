@@ -257,6 +257,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705060321040_BuildDB.cs" />
+    <Compile Include="Migrations\201705060321040_BuildDB.Designer.cs">
+      <DependentUpon>201705060321040_BuildDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\AddExternalLoginBindingModel.cs" />
     <Compile Include="Models\Account\ChangePasswordBindingModel.cs" />
     <Compile Include="Models\Account\RegisterBindingModel.cs" />
@@ -362,6 +367,11 @@
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705060321040_BuildDB.resx">
+      <DependentUpon>201705060321040_BuildDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
