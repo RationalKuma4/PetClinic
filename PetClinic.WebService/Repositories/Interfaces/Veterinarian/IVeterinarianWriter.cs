@@ -1,8 +1,11 @@
-﻿namespace PetClinic.WebService.Repositories.Interfaces.Veterinarian
+﻿using System.Threading.Tasks;
+
+namespace PetClinic.WebService.Repositories.Interfaces.Veterinarian
 {
     public interface IVeterinarianWriter
     {
-        void RegisterVeterinarian(Models.Veterinarian veterinarian);
-        void UpdateVeterinarian(Models.Veterinarian veterinarian);
+        Task RegisterVeterinarian(Models.Veterinarian veterinarian);
+        Task UpdateVeterinarian(int id, Models.Veterinarian veterinarian);
+        Task RemoveVeterinarian(int id);
     }
 }

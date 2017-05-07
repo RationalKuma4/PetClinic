@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using PetClinic.WebService.DataServices.Interfaces;
@@ -14,10 +14,16 @@ namespace PetClinic.WebService.DataServices
         {
             _context = context;
         }
-        public void CreateVeterinarian(Veterinarian veterinarian)
+
+        public bool VeterinarianExists(int id)
+        {
+            return _context.Veterinarians.Count(e => e.VeterinarianId == id) > 0;
+        }
+
+        public async Task CreateVeterinarian(Veterinarian veterinarian)
         {
             _context.Veterinarians.Add(veterinarian);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Veterinarian> GetAllVeterinarians()
@@ -25,25 +31,27 @@ namespace PetClinic.WebService.DataServices
             return _context.Veterinarians;
         }
 
-        public Task<Veterinarian> GetVeterinarianById(int id)
+        public async Task<Veterinarian> GetVeterinarianById(int id)
         {
-            return _context.Veterinarians
-                .FindAsync(id);
+            return await _context.Veterinarians.FindAsync(id);
         }
 
-        public void UpdateVeterinarian(int id)
+        public async Task UpdateVeterinarian(int id, Veterinarian veterinarian)
         {
-            throw new NotImplementedException();
+            _context.Entry(veterinarian).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public void RemoveVeterinarian(int id)
+        public async Task RemoveVeterinarian(int id)
         {
-            throw new NotImplementedException();
+            var veterinarian = await _context.Veterinarians.FindAsync(id);
+            if (veterinarian != null) _context.Veterinarians.Remove(veterinarian);
+            await _context.SaveChangesAsync();
         }
 
-        private bool VeterinarianExists(int id)
+        public void Dispose(bool disposing)
         {
-            return _context.Veterinarians.Count(e => e.VeterinarianId == id) > 0;
+            if (disposing) _context.Dispose();
         }
     }
 }

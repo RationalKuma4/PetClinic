@@ -1,5 +1,10 @@
 using System;
 using Microsoft.Practices.Unity;
+using PetClinic.WebService.DataServices;
+using PetClinic.WebService.DataServices.Interfaces;
+using PetClinic.WebService.Repositories.Interfaces.Veterinarian;
+using PetClinic.WebService.Repositories;
+using PetClinic.WebService.Repositories.Interfaces.Base;
 
 namespace PetClinic.WebService.App_Start
 {
@@ -36,6 +41,20 @@ namespace PetClinic.WebService.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+            RegisterServices(container);
+            RegisterRepositories(container);
+        }
+
+        private static void RegisterServices(IUnityContainer container)
+        {
+            container.RegisterType<IVeterinarianService, VeterinarianService>();
+        }
+
+        private static void RegisterRepositories(IUnityContainer container)
+        {
+            container.RegisterType<IVeterinarianReader, RepositoryVeterinarian>();
+            container.RegisterType<IVeterinarianWriter, RepositoryVeterinarian>();
+            container.RegisterType<IDisposeDataBase, RepositoryVeterinarian>();
         }
     }
 }

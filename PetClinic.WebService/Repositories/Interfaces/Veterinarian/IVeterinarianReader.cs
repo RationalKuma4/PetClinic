@@ -7,5 +7,6 @@ namespace PetClinic.WebService.Repositories.Interfaces.Veterinarian
     {
         IEnumerable<Models.Veterinarian> GetAllVeterinarians();
         Task<Models.Veterinarian> GetVeterinarian(int id);
+        bool VeterinarianExists(int id);
     }
 }

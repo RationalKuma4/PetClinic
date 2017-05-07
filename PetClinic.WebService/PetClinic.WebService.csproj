@@ -265,6 +265,7 @@
     </Compile>
     <Compile Include="Repositories\Interfaces\Appointment\IAppointmentReader.cs" />
     <Compile Include="Repositories\Interfaces\Appointment\IAppointmentWriter.cs" />
+    <Compile Include="Repositories\Interfaces\Base\IDisposeDataBase.cs" />
     <Compile Include="Repositories\Interfaces\Pet\IPetReader.cs" />
     <Compile Include="Repositories\Interfaces\Pet\IPetWriter.cs" />
     <Compile Include="Repositories\Interfaces\Veterinarian\IVeterinarianReader.cs" />
