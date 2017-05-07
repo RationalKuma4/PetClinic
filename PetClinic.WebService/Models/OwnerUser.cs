@@ -20,9 +20,7 @@ namespace PetClinic.WebService.Models
         [DataType(DataType.Text)]
         public string Address { get; set; }
 
-
-        public int VeterinarianId { get; set; }
-        public virtual Veterinarian Veterinarian { get; set; }
+        
         public int PetId { get; set; }
         public ICollection<Pet> Pets { get; set; }
 

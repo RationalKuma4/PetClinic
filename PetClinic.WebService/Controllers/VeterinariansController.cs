@@ -112,7 +112,7 @@ namespace PetClinic.WebService.Controllers
             }
             catch (DbUpdateException)
             {
-                if (VeterinarianExists(veterinarian.VeterinarianId)) return Conflict();
+                if (_reader.VeterinarianExists(veterinarian.VeterinarianId)) return Conflict();
                 throw;
             }
 
