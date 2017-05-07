@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using PetClinic.WebService.DataServices.Interfaces;
 using PetClinic.WebService.Models;
 using PetClinic.WebService.Repositories.Interfaces.Veterinarian;
 
@@ -7,18 +9,19 @@ namespace PetClinic.WebService.Repositories
 {
     public class RepositoryVeterinarian : IVeterinarianReader, IVeterinarianWriter
     {
-        public RepositoryVeterinarian()
+        private readonly IVeterinarianService _service;
+        public RepositoryVeterinarian(IVeterinarianService service)
         {
-
+            _service = service;
         }
         public IEnumerable<Veterinarian> GetAllVeterinarians()
         {
-            throw new NotImplementedException();
+            return _service.GetAllVeterinarians();
         }
 
-        public Veterinarian GetVeterinarian(int id)
+        public Task<Veterinarian> GetVeterinarian(int id)
         {
-            throw new NotImplementedException();
+            return _service.GetVeterinarianById(id);
         }
 
         public void RegisterVeterinarian(Veterinarian veterinarian)
