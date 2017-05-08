@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201705072043345_NoRelationwOwner.Designer.cs">
       <DependentUpon>201705072043345_NoRelationwOwner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705080209345_NoProperty.cs" />
+    <Compile Include="Migrations\201705080209345_NoProperty.Designer.cs">
+      <DependentUpon>201705080209345_NoProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Interfaces\Appointment\IAppointmentReader.cs" />
     <Compile Include="Repositories\Interfaces\Appointment\IAppointmentWriter.cs" />
     <Compile Include="Repositories\Interfaces\Base\IDisposeDataBase.cs" />
@@ -394,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705072043345_NoRelationwOwner.resx">
       <DependentUpon>201705072043345_NoRelationwOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705080209345_NoProperty.resx">
+      <DependentUpon>201705080209345_NoProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

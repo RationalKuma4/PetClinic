@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PetClinic.WebService.Models.Account
 {
@@ -18,5 +20,21 @@ namespace PetClinic.WebService.Models.Account
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Direccion")]
+        [DataType(DataType.Text)]
+        public string Address { get; set; }
+
+        public bool EmailConfirmed { get; set; }
+
+        public string PasswordHash { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool PhoneNumberConfirmed { get; set; }
+
+        public string SecurityStamp { get; set; }
+        public bool TwoFactorEnabled { get; set; }
+        public string UserName { get; set; }
+
+        public int Rol { get; set; }
     }
 }

@@ -15,3 +15,6 @@ Al crear los controladores el proceso agrega un DbSet de tipo de User, esa linea
 http://stackoverflow.com/questions/24343246/asp-net-identity-multiple-object-sets-per-type-are-not-supported
 http://stackoverflow.com/questions/25549391/multiple-object-sets-per-type-are-not-supported-the-object-sets-identityusersa
 
+->Configuiracion de inyeccion para identity - respuesta parcial
+http://stackoverflow.com/questions/21927785/configure-unity-di-for-asp-net-identity
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/dependency-injection

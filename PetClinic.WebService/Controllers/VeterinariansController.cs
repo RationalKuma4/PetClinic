@@ -21,9 +21,9 @@ namespace PetClinic.WebService.Controllers
 
         public VeterinariansController(IVeterinarianReader reader, IVeterinarianWriter writer, IDisposeDataBase dispose)
         {
-            Contract.Requires<ArgumentNullException>(reader != null);
+            /*Contract.Requires<ArgumentNullException>(reader != null);
             Contract.Requires<ArgumentNullException>(writer != null);
-            Contract.Requires<ArgumentNullException>(dispose != null);
+            Contract.Requires<ArgumentNullException>(dispose != null);*/
 
             _reader = reader;
             _writer = writer;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -27,18 +28,6 @@ namespace PetClinic.WebService.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
-        {
-            UserManager = userManager;
-            AccessTokenFormat = accessTokenFormat;
-        }
-
         public ApplicationUserManager UserManager
         {
             get
@@ -52,6 +41,17 @@ namespace PetClinic.WebService.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+
+        public AccountController()
+        {
+
+        }
+        public AccountController(ApplicationUserManager userManager,
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+        {
+            UserManager = userManager;
+            AccessTokenFormat = accessTokenFormat;
+        }
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -328,13 +328,40 @@ namespace PetClinic.WebService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new OwnerUser { UserName = model.Email, Email = model.Email };
+            var user = new OwnerUser
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                Address = model.Address,
+                TwoFactorEnabled = false,
+                PhoneNumber = "",
+                PhoneNumberConfirmed = true,
+                EmailConfirmed = true,
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
+            }
+
+            var db = new PetClinicDbContext();
+            var roleStore = new RoleStore<IdentityRole>(db);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            var userStore = new UserStore<OwnerUser, CustomRole, int, CustomUserLogin, CustomUserRole, CustomUserClaim>(db);
+            var userManager = new UserManager<OwnerUser, int>(userStore);
+
+            var singleOrDefault = db.Roles
+                .Where(r => r.Id == model.Rol)
+                .ToList()
+                .SingleOrDefault();
+            if (singleOrDefault != null)
+            {
+                var roleName = singleOrDefault
+                    .Name;
+
+                await userManager.AddToRoleAsync(user.Id, roleName);
             }
 
             return Ok();

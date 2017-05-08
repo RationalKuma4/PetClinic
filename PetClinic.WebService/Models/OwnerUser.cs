@@ -21,7 +21,6 @@ namespace PetClinic.WebService.Models
         public string Address { get; set; }
 
         
-        public int PetId { get; set; }
         public ICollection<Pet> Pets { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<OwnerUser, int> manager)

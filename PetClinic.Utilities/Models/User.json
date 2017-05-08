@@ -1,0 +1,14 @@
+﻿{
+  "Email": "user@user.com",
+  "Password": "123",
+  "ConfirmPassword": "123",
+  "Address": "ad",
+  "EmailConfirmed": true,
+  "PasswordHash": null,
+  "PhoneNumber": "123456789",
+  "PhoneNumberConfirmed": true,
+  "SecurityStamp": null,
+  "TwoFactorEnabled": false,
+  "UserName": "hola",
+  "Rol": 1
+}

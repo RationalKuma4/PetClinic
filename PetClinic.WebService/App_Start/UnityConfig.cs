@@ -1,10 +1,15 @@
 using System;
+using Microsoft.AspNet.Identity;
 using Microsoft.Practices.Unity;
+using PetClinic.WebService.Controllers;
 using PetClinic.WebService.DataServices;
 using PetClinic.WebService.DataServices.Interfaces;
+using PetClinic.WebService.Models;
 using PetClinic.WebService.Repositories.Interfaces.Veterinarian;
 using PetClinic.WebService.Repositories;
 using PetClinic.WebService.Repositories.Interfaces.Base;
+using Microsoft.Owin.Security;
+using PetClinic.WebService.Models.CustomUser;
 
 namespace PetClinic.WebService.App_Start
 {
@@ -41,6 +46,13 @@ namespace PetClinic.WebService.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType<ApplicationUserManager>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+
+            container.RegisterType<PetClinicDbContext>();
+            container.RegisterType<ISecureDataFormat<AuthenticationTicket>>();
+
             RegisterServices(container);
             RegisterRepositories(container);
         }
