@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using PetClinic.WebService.DataServices.Interfaces;
 using PetClinic.WebService.Models;
@@ -8,39 +9,50 @@ namespace PetClinic.WebService.DataServices
 {
     public class AppointmentService : IAppointmentService
     {
+        private readonly PetClinicDbContext _context;
+
+        public AppointmentService(PetClinicDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task CreateAppointment(Appointment appointment)
         {
-            throw new NotImplementedException();
+            _context.Appointments.Add(appointment);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Appointment> GetAllAppointments()
         {
-            throw new NotImplementedException();
+            return _context.Appointments;
         }
 
         public async Task<Appointment> GetAppointmentById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Appointments.FindAsync(id);
         }
 
-        public async Task UpdateAppointment(Veterinarian veterinarian)
+        public async Task UpdateAppointment(Appointment appointment)
         {
-            throw new NotImplementedException();
+            _context.Entry(appointment).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
         public async Task RemoveAppointment(int id)
         {
-            throw new NotImplementedException();
+            var appointment = await _context.Appointments.FindAsync(id);
+            if (appointment != null) _context.Appointments.Remove(appointment);
+            await _context.SaveChangesAsync();
         }
 
         public bool AppointmentExists(int id)
         {
-            throw new NotImplementedException();
+            return _context.Appointments.Count(e => e.AppointmentId == id) > 0;
         }
 
         public void Dispose(bool disposing)
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }

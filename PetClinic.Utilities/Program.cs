@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PetClinic.WebService.Models;
 using PetClinic.WebService.Models.Account;
 
 namespace PetClinic.Utilities
@@ -7,8 +8,11 @@ namespace PetClinic.Utilities
     {
         static void Main(string[] args)
         {
-            var userObj = new RegisterBindingModel();
-            string output = JsonConvert.SerializeObject(userObj);
+            //var userObj = new RegisterBindingModel();
+            //var pet = new Pet();
+            //var appointment = new Appointment();
+            var vet = new Veterinarian();
+            string output = JsonConvert.SerializeObject(vet);
 
         }
     }

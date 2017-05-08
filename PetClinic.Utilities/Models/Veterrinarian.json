@@ -1,0 +1,13 @@
+﻿{
+  "VeterinarianId": 0,
+  "Name": null,
+  "Lastname": null,
+  "ClinicName": null,
+  "ClinicAddress": null,
+  "ServiceHours": null,
+  "Telephone": null,
+  "Email": null,
+  "Observations": null,
+  "OwnerUserId": 0,
+  "OwnerUser": null
+}

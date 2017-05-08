@@ -1,0 +1,9 @@
+﻿{
+  "AppointmentId": 0,
+  "DateAppointment": "0001-01-01T00:00:00",
+  "Completed": false,
+  "AppointmentType": 0,
+  "Observations": null,
+  "PetId": 0,
+  "Pet": null
+}

@@ -52,7 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Models\Appointment.json" />
+    <None Include="Models\Pet.json" />
     <None Include="Models\User.json" />
+    <None Include="Models\Veterrinarian.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

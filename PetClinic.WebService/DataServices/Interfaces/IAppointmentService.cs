@@ -10,7 +10,7 @@ namespace PetClinic.WebService.DataServices.Interfaces
         Task CreateAppointment(Appointment appointment);
         IEnumerable<Appointment> GetAllAppointments();
         Task<Appointment> GetAppointmentById(int id);
-        Task UpdateAppointment(Veterinarian veterinarian);
+        Task UpdateAppointment(Appointment appointment);
         Task RemoveAppointment(int id);
         bool AppointmentExists(int id);
         void Dispose(bool disposing);
