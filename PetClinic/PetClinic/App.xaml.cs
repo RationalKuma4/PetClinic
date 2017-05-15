@@ -1,5 +1,7 @@
-﻿using Prism.Unity;
+﻿using Microsoft.Practices.Unity;
 using PetClinic.Views;
+using PetClinic.Views.Usuarios;
+using Prism.Unity;
 using Xamarin.Forms;
 
 namespace PetClinic
@@ -12,13 +14,20 @@ namespace PetClinic
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
+            NavigationService.NavigateAsync(PageNames.LoginPageName);
         }
 
         protected override void RegisterTypes()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
+            RegisterPages(Container);
+        }
+
+        private void RegisterPages(IUnityContainer container)
+        {
+            container.RegisterTypeForNavigation<NavigationPage>();
+            container.RegisterTypeForNavigation<MainPage>();
+            container.RegisterTypeForNavigation<LoginPage>();
+            container.RegisterTypeForNavigation<RegisterUserPage>();
         }
     }
 }

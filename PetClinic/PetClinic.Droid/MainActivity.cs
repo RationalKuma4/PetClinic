@@ -11,7 +11,7 @@ using Microsoft.Practices.Unity;
 
 namespace PetClinic.Droid
 {
-    [Activity(Label = "PetClinic", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PetClinic", Icon = "@drawable/icono", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
