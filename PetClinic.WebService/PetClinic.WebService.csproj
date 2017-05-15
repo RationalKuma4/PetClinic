@@ -260,6 +260,9 @@
     <Compile Include="DataServices\Interfaces\IVeterinarianService.cs" />
     <Compile Include="DataServices\PetService.cs" />
     <Compile Include="DataServices\VeterinarianService.cs" />
+    <Compile Include="Filters\BasicAuthenticationAttribute.cs" />
+    <Compile Include="Filters\HttpAuthenticationChallengeContextExtensions.cs" />
+    <Compile Include="Filters\IdentityBasicAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +274,8 @@
     <Compile Include="Migrations\201705080209345_NoProperty.Designer.cs">
       <DependentUpon>201705080209345_NoProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account\LoginUserBindingModel.cs" />
+    <Compile Include="ModulesHttp\BasicAuthHttpModule.cs" />
     <Compile Include="Repositories\Interfaces\Appointment\IAppointmentReader.cs" />
     <Compile Include="Repositories\Interfaces\Appointment\IAppointmentWriter.cs" />
     <Compile Include="Repositories\Interfaces\Base\IDisposeDataBase.cs" />
@@ -307,6 +312,8 @@
     <Compile Include="Repositories\RepositoryAppointment.cs" />
     <Compile Include="Repositories\RepositoryPet.cs" />
     <Compile Include="Repositories\RepositoryVeterinarian.cs" />
+    <Compile Include="Results\AddChallengeOnUnauthorizedResult.cs" />
+    <Compile Include="Results\AuthenticationFailureResult.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginViewModel.cs" />

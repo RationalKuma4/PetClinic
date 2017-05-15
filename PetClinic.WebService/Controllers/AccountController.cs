@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using PetClinic.WebService.Filters;
 using PetClinic.WebService.Models;
 using PetClinic.WebService.Models.Account;
 using PetClinic.WebService.Models.CustomUser;
@@ -398,6 +399,19 @@ namespace PetClinic.WebService.Controllers
                 return GetErrorResult(result);
             }
             return Ok();
+        }
+
+        [Route("Login")]
+        [HttpGet]
+        [IdentityBasicAuthentication]
+        [Authorize]
+        public IHttpActionResult Login(/*LoginUserBindingModel model*/)
+        {
+            /*if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }*/
+            return Json("hla");
         }
 
         protected override void Dispose(bool disposing)
