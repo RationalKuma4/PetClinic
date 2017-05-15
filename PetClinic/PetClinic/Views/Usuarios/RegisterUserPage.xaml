@@ -5,5 +5,25 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="Registro">
-  <StackLayout></StackLayout>
+  <StackLayout Spacing="15"
+               Margin="10"
+               Padding="20"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"
+               Orientation="Vertical">
+    <Entry PlaceholderColor="Black"
+           Placeholder="Nombre"
+           FontAttributes="Italic"
+           HorizontalTextAlignment="Start"/>
+    <Entry PlaceholderColor="Black"
+           Placeholder="Usuario"
+           FontAttributes="Italic"
+           HorizontalTextAlignment="Start"/>
+    <Entry PlaceholderColor="Black"
+           Placeholder="Correo Electronico"
+           FontAttributes="Italic"
+           HorizontalTextAlignment="Start"/>
+    <Button Text="Registrar"
+            BindingContext="{Binding RegisterUserCommand}"/>
+  </StackLayout>
 </ContentPage>

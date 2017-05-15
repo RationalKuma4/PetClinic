@@ -9,6 +9,7 @@ using PetClinic.WebService.Models;
 
 namespace PetClinic.WebService.Controllers
 {
+    [Authorize(Roles = "Usuario")]
     public class AppointmentsController : ApiController
     {
         private PetClinicDbContext db = new PetClinicDbContext();

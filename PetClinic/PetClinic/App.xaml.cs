@@ -20,6 +20,7 @@ namespace PetClinic
         protected override void RegisterTypes()
         {
             RegisterPages(Container);
+            RegisterDataServices(Container);
         }
 
         private void RegisterPages(IUnityContainer container)
@@ -28,6 +29,11 @@ namespace PetClinic
             container.RegisterTypeForNavigation<MainPage>();
             container.RegisterTypeForNavigation<LoginPage>();
             container.RegisterTypeForNavigation<RegisterUserPage>();
+        }
+
+        private void RegisterDataServices(IUnityContainer container)
+        {
+
         }
     }
 }

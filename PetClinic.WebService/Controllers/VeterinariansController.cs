@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Entity.Infrastructure;
-using System.Diagnostics.Contracts;
+﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -12,6 +10,7 @@ using PetClinic.WebService.Repositories.Interfaces.Veterinarian;
 
 namespace PetClinic.WebService.Controllers
 {
+    [Authorize(Roles = "Usuario")]
     public class VeterinariansController : ApiController
     {
         //private PetClinicDbContext db = new PetClinicDbContext();
