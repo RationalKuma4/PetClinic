@@ -4,13 +4,15 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
+using PetClinic.WebService.Filters;
 using PetClinic.WebService.Models;
 using PetClinic.WebService.Repositories.Interfaces.Base;
 using PetClinic.WebService.Repositories.Interfaces.Veterinarian;
 
 namespace PetClinic.WebService.Controllers
 {
-    [Authorize(Roles = "Usuario")]
+    [Authorize]
     public class VeterinariansController : ApiController
     {
         //private PetClinicDbContext db = new PetClinicDbContext();
@@ -29,10 +31,16 @@ namespace PetClinic.WebService.Controllers
             _dispose = dispose;
         }
 
+        [IdentityBasicAuthentication]
         // GET: api/Veterinarians
         public IQueryable<Veterinarian> GetVeterinarians()
         {
             //return db.Veterinarians;
+            var user = new OwnerUser
+            {
+                UserName = User.Identity.Name,
+                Email = User.Identity.GetUserId(),
+            };
             return (IQueryable<Veterinarian>)_reader.GetAllVeterinarians();
         }
 

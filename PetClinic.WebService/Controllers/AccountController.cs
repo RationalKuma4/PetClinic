@@ -55,22 +55,28 @@ namespace PetClinic.WebService.Controllers
         }
 
         // GET api/Account/UserInfo
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
-        public UserInfoViewModel GetUserInfo()
+        [IdentityBasicAuthentication]
+        public /*UserInfoViewModel*/OwnerUser GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-
-            return new UserInfoViewModel
+            return new OwnerUser
+            {
+                UserName = User.Identity.Name,
+                Email = User.Identity.GetUserId(),
+            };
+            /*return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
+                LoginProvider = externalLogin?.LoginProvider
+            };*/
         }
 
         // POST api/Account/Logout
         [Route("Logout")]
+        [IdentityBasicAuthentication]
         public IHttpActionResult Logout()
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
@@ -404,7 +410,6 @@ namespace PetClinic.WebService.Controllers
         [Route("Login")]
         [HttpGet]
         [IdentityBasicAuthentication]
-        [Authorize]
         public IHttpActionResult Login(/*LoginUserBindingModel model*/)
         {
             /*if (!ModelState.IsValid)

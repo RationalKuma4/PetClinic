@@ -18,3 +18,23 @@ http://stackoverflow.com/questions/25549391/multiple-object-sets-per-type-are-no
 ->Configuiracion de inyeccion para identity - respuesta parcial
 http://stackoverflow.com/questions/21927785/configure-unity-di-for-asp-net-identity
 https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/dependency-injection
+
+->Autenticacion
+https://developer.xamarin.com/guides/xamarin-forms/cloud-services/authentication/
+https://developer.xamarin.com/guides/xamarin-forms/cloud-services/authentication/rest/
+
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-filters
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication
+
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-filters
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication
+https://www.asp.net/web-api/overview/security
+https://app.pluralsight.com/player?author=dominick-baier&name=webapi-v2-security-m3-architecture&mode=live&clip=0&course=webapi-v2-security
+
+https://www.codeproject.com/Articles/990492/RESTful-Day-sharp-Enterprise-Level-Application#_Toc418969124
+https://www.codeproject.com/Articles/1005485/RESTful-Day-sharp-Security-in-Web-APIs-Basic
+
+->Menu tab
+https://almirvuk.blogspot.mx/search/label/Xamarin
+https://github.com/biozal/XamarinFormsPrismTraining
